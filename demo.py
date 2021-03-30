@@ -29,9 +29,9 @@ def draw_qt(tree: QuadTree, screen):
 def launch_demo(count: int, width: int, height: int, quadrant_capacity: int, show_quadtree: bool):
     p.init()
     p.font.init()
-    font = p.font.SysFont('Comic Sans MS', 40)
+    font = p.font.SysFont('Ariel', 40)
     size = width, height
-    screen = p.display.set_mode(size)
+    screen = p.display.set_mode(size, flags=p.DOUBLEBUF | p.SCALED)
     clock = p.time.Clock()
 
     main_bound = Rectangle(width // 2, height // 2, width // 2, height // 2)
@@ -98,6 +98,7 @@ def launch_demo(count: int, width: int, height: int, quadrant_capacity: int, sho
         text = font.render("{:.2g}".format(1000 / fps), True, WHITE)
         screen.blit(text, (0, 0))
 
+        # p.display.update()
         p.display.flip()
 
         # Cap fps to 60
